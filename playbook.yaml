@@ -1,0 +1,16 @@
+- name: 'Deploy Web Applicaton'
+  hosts: localhost
+  become: true
+  roles: 
+      - python_dep
+      - mysql_db
+      - flask_web
+
+
+    
+
+    
+
+    
+
+    

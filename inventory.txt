@@ -1,0 +1,1 @@
+localhost ansible_host=192.168.100.39 ansible_ssh_pass=adminuser ansible_sudo_pass=adminuser

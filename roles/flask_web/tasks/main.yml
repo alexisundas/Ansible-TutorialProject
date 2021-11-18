@@ -1,0 +1,8 @@
+    - name: Install Python Flask Dependency
+      pip:
+        name:
+          - flask
+          - flask_mysql
+
+    - name: Run flask app
+      shell: nohup python3 /opt/WebApp/app.py > log.txt 2>&1 &

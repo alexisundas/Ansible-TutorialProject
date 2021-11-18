@@ -1,0 +1,5 @@
+    - name: Install Epel and Git
+      yum: update_cache=yes name=epel-release,git state=present
+
+    - name: Install Python and Pip
+      yum: update_cache=yes name=python3,python3-pip state=present

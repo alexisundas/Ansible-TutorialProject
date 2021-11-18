@@ -1,0 +1,7 @@
+ansible_host: 192.168.100.39 
+ansible_ssh_pass: adminuser 
+ansible_sudo_pass: adminuser
+
+db_name: employee_db
+db_user: db_user
+db_user_password: Passw0rd

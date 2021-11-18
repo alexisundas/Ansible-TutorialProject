@@ -1,0 +1,38 @@
+---
+# tasks file for mysql_db
+    - name: Make sure PyMySQL is present
+      pip:
+        name: pymysql
+        state: present
+
+    - name: Install MySQL-Server
+      yum:
+        name:
+          - mariadb-server
+          - php-mysqlnd
+        state: present
+    
+    - name: 'Start MariaDB'
+      service:
+        name: mariadb.service
+        state: started
+    - name: 'Systemctl MariaDB'
+      systemd:
+        name: mariadb
+        state: started
+      
+    - name: Create Application Database
+      mysql_db: name="{{ db_name }}" state=present
+    
+    - name: Create Database User
+      mysql_user:
+        name: "{{ db_user }}"
+        password: "{{ db_user_password }}"
+        priv: '*.*:ALL'
+        state: present
+        host: '%'
+
+    - name: Add Database to Server
+      copy: src=db_input.sql dest=/opt/Login/db_input.sql state=present
+    - name: Insert Sample data into database  
+      mysql_db: name=employee_db state=import target=/opt/LoginPage/db_input.sql 

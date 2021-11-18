@@ -1,0 +1,33 @@
+- name: Configure and Start all Services needed
+  hosts: all
+  become: true
+  tasks:
+    - name: "Start Firewall Service"
+      service:
+        name: firewalld
+        state: started
+
+    - name: " Systemctl Firewalld"
+      systemd:
+        name: firewalld
+        state: started
+
+    - name: 'Start all'
+      service:
+        name: mariadb.service
+        state: started
+
+    - name: 'Systemctl MariaDB'
+      systemd:
+        name: mariadb
+        state: started
+    
+    - name: "Start httpd Service"
+      service:
+        name: httpd
+        state: started
+
+    - name: "Systemctl httpd"
+      systemd:
+        name: httpd
+        state: started
